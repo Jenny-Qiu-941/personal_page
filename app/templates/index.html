@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html>
+<head>
+    <!--网页标题-->
+    <title>hello</title>
+    <!--设置编码格式-->
+    <meta charset="UTF-8">
+</head>
+
+
+<body>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='mycss.css')}}>
+    <div class="header">
+        <h1>欢迎来到我的个人界面</h1>
+        {% if username %}
+            <p>{{username}}, nice to meet you!</p>
+        {% else %}
+            <p>Nice to meet you!</p>
+        {% endif %}
+
+
+    </div>
+
+    <div class="navbar">
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+        {% if username %}
+        <a href="{{ url_for('logout') }}" class="right">注销</a>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="right">登录</a>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="side">
+            <h2>关于我</h2>
+            <h5>我的照片：</h5>
+            <div class="fakeimg" style="height:200px;background-image:url({{ url_for('static', filename='image/head.jpg', _external=True) }});"></div>
+            <p>我的个人介绍...</p>
+            <h3>更多内容</h3>
+            <div class="moreimg" style="height:40px;background-color:gray"></div>
+            <div class="moreimg" style="height:40px;background-color:gray"></div>
+            <div class="moreimg" style="height:40px;background-color:gray"></div>
+        </div>
+        <div class="main">
+            <h2>标题</h2>
+            <h5>副标题</h5>
+            <div class="mainimg" style="height:400px;background-image:url({{ url_for('static', filename='image/mainpic1.jpg') }})"></div>
+            <p>这里是一大段自我介绍...</p>
+        </div>
+
+    </div>
+    <div class="footer">
+        <h1>To say goodbye is to die a little.</h1>
+    </div>
+</body>
+</html>
